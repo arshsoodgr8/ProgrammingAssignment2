@@ -1,10 +1,10 @@
 ## The below two functions create a matrix object which 
 ## caches inverse of the associated matrix to reduce 
-## computation time
+## computation time.
 
 ## Creates and returns a matrix object that can cache its inverse
 makeCacheMatrix <- function(x = matrix()) {
-  m <- NULL                       ## initiates inverse of the matrix object as null
+  m <- NULL                       ## initiates inverse of the matrix as null
   set <- function(y) {            ## sets y as the matrix associated with the object
     x <<- y
     m <<- NULL
@@ -20,7 +20,7 @@ makeCacheMatrix <- function(x = matrix()) {
        getinverse = getinverse)
 }
 
-## Returns inverse of matrix object by accessing cache if 
+## Returns inverse of matrix associated with object by accessing cache if 
 ## inverse has been already computed
 cacheSolve <- function(x, ...) {
   m <- x$getinverse()       ## return cached inverse in m
@@ -30,6 +30,6 @@ cacheSolve <- function(x, ...) {
   }
   data <- x$get()           ## extract matrix associated with object
   m <- solve(data, ...)     ## compute matrix inverse
-  x$setinverse(m)           ## store inverse in the object
+  x$setinverse(m)           ## store matrix inverse in the object
   m                         
 }
